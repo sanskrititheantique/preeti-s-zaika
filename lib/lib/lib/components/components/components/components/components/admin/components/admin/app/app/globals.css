@@ -1,0 +1,155 @@
+:root {
+  --cream: #fbf1de;
+  --paper: #fffdf8;
+  --forest: #1b3b2c;
+  --forest-dark: #0e2118;
+  --mustard: #f0ac1e;
+  --mustard-dark: #c98a0f;
+  --maroon: #7a1f1f;
+  --ink: #2b2013;
+  --ink-soft: #5c5442;
+  --line: #d8cba7;
+  --shadow: 0 10px 30px -12px rgba(27, 59, 44, 0.35);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Poppins", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Baloo 2", "Poppins", sans-serif;
+  color: var(--forest);
+  margin: 0;
+}
+
+.price, .mono {
+  font-family: "DM Mono", monospace;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ---------- layout helpers ---------- */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- signature: dashed "kitchen ticket" motif ---------- */
+.ticket {
+  background: var(--paper);
+  border: 2px dashed var(--forest);
+  border-radius: var(--radius);
+  position: relative;
+}
+
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: var(--cream);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ticket::before { left: -13px; }
+.ticket::after { right: -13px; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--mustard);
+  color: var(--forest-dark);
+  box-shadow: 0 6px 0 0 var(--mustard-dark);
+}
+.btn-primary:hover { background: #f5b62e; }
+.btn-primary:disabled {
+  background: #e4d7ae;
+  box-shadow: none;
+  color: #9c8f6f;
+  cursor: not-allowed;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--forest);
+  color: var(--forest);
+}
+.btn-outline:hover { background: var(--forest); color: var(--cream); }
+
+.btn-maroon {
+  background: var(--maroon);
+  color: var(--cream);
+  box-shadow: 0 6px 0 0 #521212;
+}
+
+.btn-sm {
+  padding: 7px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+}
+
+/* ---------- badges ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge-green { background: #eaf3ea; color: var(--forest); }
+.badge-mustard { background: #fef2dc; color: var(--mustard-dark); }
+.badge-maroon { background: #f7e6e6; color: var(--maroon); }
+.badge-gray { background: #ece7d8; color: var(--ink-soft); }
+
+/* ---------- scroll bar niceties ---------- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+:focus-visible {
+  outline: 3px solid var(--mustard);
+  outline-offset: 2px;
+}
